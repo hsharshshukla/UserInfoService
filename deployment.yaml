@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userinfoservice
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: userinfoservice
+  template:
+    metadata:
+      labels:
+        app: userinfoservice
+    spec:
+      containers:
+      - name: userinfoservice
+        image: hsharshshukla/userinfoservice
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
